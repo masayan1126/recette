@@ -23,7 +23,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
       # .envファイルの「DB_DATABASE」と合わせる
-      MYSQL_DATABASE: test_db
+      MYSQL_DATABASE: recipe_db
       TZ: "Asia/Tokyo"
       # 文字コード指定
     command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
@@ -45,7 +45,7 @@ services:
     links:
       - db
     ports:
-    # コンテナのポートが4桁だとなぜか起動しない     
+      # コンテナのポートが4桁だとなぜか起動しない
       - 8080:80
     volumes:
       - /sessions
