@@ -8,14 +8,18 @@ require("./bootstrap");
 
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter, Route } from "react-router-dom";
+import { Switch, Route, useHistory, BrowserRouter } from "react-router-dom";
 
 import Calendar from "./components/calendar/Calendar";
+import Modal from "./components/common/Modal";
 
 const App = () => {
     return (
         <BrowserRouter>
-            <Route path="/calendar" component={Calendar} />
+            <Switch>
+                <Route path="/calendar/:date_id/edit" component={Modal} />
+                <Route exact path="/calendar" component={Calendar} />
+            </Switch>
         </BrowserRouter>
     );
 };
