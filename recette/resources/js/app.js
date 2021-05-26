@@ -9,6 +9,7 @@ require("./bootstrap");
 import React from "react";
 import ReactDOM from "react-dom";
 import { Switch, Route, useHistory, BrowserRouter } from "react-router-dom";
+import "../css/app.css";
 
 import Calendar from "./components/calendar/Calendar";
 import Modal from "./components/common/Modal";
