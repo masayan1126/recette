@@ -1,7 +1,10 @@
 import React, { useCallback, useState, useEffect } from "react";
 import CalendarData from "./CalendarData";
+import { Switch, Route, useHistory, BrowserRouter } from "react-router-dom";
+// import Modal from "../common/Modal";
 
 const Calendar = () => {
+    const [isShow, setIsShow] = useState(false);
     const [events, setEvents] = useState([
         {
             id: 1,
@@ -19,30 +22,34 @@ const Calendar = () => {
         },
     ]);
 
+    const history = useHistory();
+
     const inputEvents = useCallback(() => {
         setEvents(events);
     }, [setEvents]);
 
-    const convertDateFormat = useCallback((info) => {
-        const dt = info.event.start;
+    const convertDateFormat = useCallback((eventData) => {
+        const dt = eventData.event.start;
         const y = dt.getFullYear();
         const m = ("00" + (dt.getMonth() + 1)).slice(-2);
         const d = ("00" + dt.getDate()).slice(-2);
-        const result = y + "/" + m + "/" + d;
+        const result = y + m + d;
         return result;
     }, []);
 
-    const clickEvent = (info) => {
-        const newDate = convertDateFormat(info);
-        console.log(newDate);
+    const displayEvent = (eventData) => {
+        const newDate = convertDateFormat(eventData);
+        history.push("/calendar/" + newDate + "/edit");
     };
 
     return (
-        <CalendarData
-            events={events}
-            clickEvent={clickEvent}
-            inputEvents={inputEvents}
-        />
+        <>
+            <CalendarData
+                events={events}
+                clickEvent={displayEvent}
+                inputEvents={inputEvents}
+            />
+        </>
     );
 };
 export default Calendar;
