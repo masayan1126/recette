@@ -11,15 +11,17 @@ import ReactDOM from "react-dom";
 import { Switch, Route, useHistory, BrowserRouter } from "react-router-dom";
 import "../css/app.css";
 
-import Calendar from "./components/calendar/Calendar";
-import Modal from "./components/common/Modal";
+import CalendarFrame from "./components/calendar/CalendarFrame";
 
 const App = () => {
     return (
         <BrowserRouter>
             <Switch>
-                <Route path="/calendar/:date_id/edit" component={Modal} />
-                <Route exact path="/calendar" component={Calendar} />
+                {/* <Route
+                    path="/calendar/:date_id"
+                    component={RecipeScheduleForm}
+                /> */}
+                <Route path="/calendar(/:date_id)?" component={CalendarFrame} />
             </Switch>
         </BrowserRouter>
     );

@@ -16281,12 +16281,11 @@ module.exports = {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var _css_app_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../css/app.css */ "./resources/css/app.css");
-/* harmony import */ var _components_calendar_Calendar__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/calendar/Calendar */ "./resources/js/components/calendar/Calendar.jsx");
-/* harmony import */ var _components_common_Modal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/common/Modal */ "./resources/js/components/common/Modal.jsx");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _components_calendar_CalendarFrame__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/calendar/CalendarFrame */ "./resources/js/components/calendar/CalendarFrame.jsx");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes React and other helpers. It's a great starting point while
@@ -16301,25 +16300,19 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 
-
-
 var App = function App() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.BrowserRouter, {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Switch, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Route, {
-        path: "/calendar/:date_id/edit",
-        component: _components_common_Modal__WEBPACK_IMPORTED_MODULE_4__.default
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Route, {
-        exact: true,
-        path: "/calendar",
-        component: _components_calendar_Calendar__WEBPACK_IMPORTED_MODULE_3__.default
-      })]
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.BrowserRouter, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Switch, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Route, {
+        path: "/calendar(/:date_id)?",
+        component: _components_calendar_CalendarFrame__WEBPACK_IMPORTED_MODULE_3__.default
+      })
     })
   });
 };
 
 if (document.getElementById("app")) {
-  react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(App, {}), document.getElementById("app"));
+  react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(App, {}), document.getElementById("app"));
 }
 
 /***/ }),
@@ -16368,94 +16361,6 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
-/***/ "./resources/js/components/calendar/Calendar.jsx":
-/*!*******************************************************!*\
-  !*** ./resources/js/components/calendar/Calendar.jsx ***!
-  \*******************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _CalendarData__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CalendarData */ "./resources/js/components/calendar/CalendarData.jsx");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]); if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-
-
- // import Modal from "../common/Modal";
-
-
-
-
-var Calendar = function Calendar() {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
-      _useState2 = _slicedToArray(_useState, 2),
-      isShow = _useState2[0],
-      setIsShow = _useState2[1];
-
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([{
-    id: 1,
-    title: "event 1",
-    start: "2021-05-22",
-    end: "2021-05-22",
-    memo: "memo1"
-  }, {
-    id: 2,
-    title: "event 2",
-    start: "2021-05-23 10:00:00",
-    end: "2021-05-23 11:00:00",
-    memo: "memo2"
-  }]),
-      _useState4 = _slicedToArray(_useState3, 2),
-      events = _useState4[0],
-      setEvents = _useState4[1];
-
-  var history = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.useHistory)();
-  var inputEvents = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function () {
-    setEvents(events);
-  }, [setEvents]);
-  var convertDateFormat = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (eventData) {
-    var dt = eventData.event.start;
-    var y = dt.getFullYear();
-    var m = ("00" + (dt.getMonth() + 1)).slice(-2);
-    var d = ("00" + dt.getDate()).slice(-2);
-    var result = y + m + d;
-    return result;
-  }, []);
-
-  var displayEvent = function displayEvent(eventData) {
-    var newDate = convertDateFormat(eventData);
-    history.push("/calendar/" + newDate + "/edit");
-  };
-
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_CalendarData__WEBPACK_IMPORTED_MODULE_1__.default, {
-      events: events,
-      clickEvent: displayEvent,
-      inputEvents: inputEvents
-    })
-  });
-};
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Calendar);
-
-/***/ }),
-
 /***/ "./resources/js/components/calendar/CalendarData.jsx":
 /*!***********************************************************!*\
   !*** ./resources/js/components/calendar/CalendarData.jsx ***!
@@ -16491,13 +16396,253 @@ var CalendarData = function CalendarData(props) {
     initialView: "dayGridMonth",
     locale: "ja" // 登録済みのイベントの配列
     ,
-    events: props.events // イベントクリック時のリスナー
+    events: props.allEvents // イベントクリック時のリスナー
     ,
     eventClick: props.clickEvent
   });
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CalendarData);
+
+/***/ }),
+
+/***/ "./resources/js/components/calendar/CalendarFrame.jsx":
+/*!************************************************************!*\
+  !*** ./resources/js/components/calendar/CalendarFrame.jsx ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var _common_Button__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../common/Button */ "./resources/js/components/common/Button.jsx");
+/* harmony import */ var _CalendarData__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./CalendarData */ "./resources/js/components/calendar/CalendarData.jsx");
+/* harmony import */ var _CalendarInputForm__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./CalendarInputForm */ "./resources/js/components/calendar/CalendarInputForm.jsx");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]); if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+
+
+
+
+var CalendarFrame = function CalendarFrame() {
+  var history = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useHistory)(); // history.push("/calendar/" + newDate);
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+      _useState2 = _slicedToArray(_useState, 2),
+      allEvents = _useState2[0],
+      setAllEvents = _useState2[1],
+      _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState4 = _slicedToArray(_useState3, 2),
+      isShow = _useState4[0],
+      _setIsShow = _useState4[1],
+      _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+      _useState6 = _slicedToArray(_useState5, 2),
+      start = _useState6[0],
+      setStart = _useState6[1],
+      _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+      _useState8 = _slicedToArray(_useState7, 2),
+      title = _useState8[0],
+      setTitle = _useState8[1];
+
+  var basicRecipes = [{
+    id: 1,
+    name: "オムライス"
+  }, {
+    id: 2,
+    name: "肉じゃが"
+  }, {
+    id: 3,
+    name: "ハンバーグ"
+  }, {
+    id: 4,
+    name: "ナポリタン"
+  }];
+  var targetDates = ["2021-05-20", "2021-05-21"];
+
+  var addNewRecipeSchedule = function addNewRecipeSchedule(mode) {
+    var newRecipeSchedule = []; // 自動登録の場合
+
+    if (mode == "automatic") {
+      targetDates.forEach(function (start, index) {
+        var temp = {
+          start: start,
+          title: basicRecipes[index].name,
+          user_id: 1 // memo)後で動的にとれるように修正する
+
+        };
+        newRecipeSchedule.push(temp);
+        console.log(newRecipeSchedule);
+      });
+    } else {
+      var temp = {
+        start: start,
+        title: title,
+        user_id: 1 // memo)後で動的にとれるように修正する
+
+      };
+      newRecipeSchedule.push(temp);
+    }
+
+    axios.post("/api/calendar", newRecipeSchedule).then(function (res) {
+      console.log(res.data);
+      fetchAllRecipeSchedules();
+
+      _setIsShow(false);
+    })["catch"](function (error) {
+      console.log(error);
+    });
+  };
+
+  var inputTitle = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (event) {
+    setTitle(event.target.value);
+  }, [setTitle]); //  -> 2020-01-05
+
+  var convertDateFormat = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (eventData) {
+    var dt = eventData.event.start;
+    var y = dt.getFullYear();
+    var m = ("00" + (dt.getMonth() + 1)).slice(-2);
+    var d = ("00" + dt.getDate()).slice(-2);
+    var convertedDate = y + "-" + m + "-" + d;
+    return convertedDate;
+  }, []);
+
+  var displayEvent = function displayEvent(eventData) {
+    // フォームに日付とイベントタイトルをセット
+    setStart(convertDateFormat(eventData));
+    setTitle(eventData.event.title);
+
+    _setIsShow(true);
+  };
+
+  var fetchAllRecipeSchedules = function fetchAllRecipeSchedules() {
+    axios.get("/api/calendar").then(function (res) {
+      setAllEvents(res.data);
+    })["catch"](function (error) {
+      console.log(error);
+    });
+  };
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    fetchAllRecipeSchedules();
+  }, []);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
+    children: isShow ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_CalendarInputForm__WEBPACK_IMPORTED_MODULE_3__.default, {
+      addNewRecipeSchedule: addNewRecipeSchedule,
+      inputTitle: inputTitle,
+      setIsShow: function setIsShow() {
+        return _setIsShow();
+      },
+      setTitle: setTitle,
+      start: start,
+      title: title
+    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_common_Button__WEBPACK_IMPORTED_MODULE_1__.default, {
+        className: "",
+        name: "\u30B9\u30B1\u30B8\u30E5\u30FC\u30EB\u4E00\u62EC\u767B\u9332",
+        onClick: function onClick() {
+          return addNewRecipeSchedule("automatic");
+        }
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_CalendarData__WEBPACK_IMPORTED_MODULE_2__.default, {
+        allEvents: allEvents,
+        clickEvent: displayEvent
+      })]
+    })
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CalendarFrame);
+
+/***/ }),
+
+/***/ "./resources/js/components/calendar/CalendarInputForm.jsx":
+/*!****************************************************************!*\
+  !*** ./resources/js/components/calendar/CalendarInputForm.jsx ***!
+  \****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _common_TextInput__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../common/TextInput */ "./resources/js/components/common/TextInput.jsx");
+/* harmony import */ var _common_Button__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../common/Button */ "./resources/js/components/common/Button.jsx");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+
+
+
+var CalendarInputForm = function CalendarInputForm(props) {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+    className: "flex items-center justify-center fixed left-0 bottom-0 w-full h-full bg-gray-800",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+      className: "bg-white rounded-lg w-1/2",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+        className: "flex flex-col items-start p-4",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+            className: "flex items-center w-full",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+              className: "text-gray-900 font-medium text-lg",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+                children: props.start
+              })
+            })
+          }), "\u6669\u3054\u306F\u3093:", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_common_TextInput__WEBPACK_IMPORTED_MODULE_1__.default, {
+            className: "",
+            onChange: props.inputTitle,
+            required: true,
+            type: "text",
+            value: props.title
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+          className: "ml-auto",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_common_Button__WEBPACK_IMPORTED_MODULE_2__.default, {
+            className: "",
+            name: "\u767B\u9332\u3059\u308B",
+            onClick: function onClick() {
+              return props.addNewRecipeSchedule();
+            }
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_common_Button__WEBPACK_IMPORTED_MODULE_2__.default, {
+            className: "",
+            name: "\u9589\u3058\u308B",
+            onClick: function onClick() {
+              return props.setIsShow(false);
+            }
+          })]
+        })]
+      })
+    })
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CalendarInputForm);
 
 /***/ }),
 
@@ -16519,47 +16664,15 @@ __webpack_require__.r(__webpack_exports__);
 
 var Button = function Button(props) {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-    className: "bg-gradient-to-r from-gray-100 to-blue-500",
-    children: "\u767B\u9332"
+    className: props.className,
+    onClick: function onClick() {
+      return props.onClick();
+    },
+    children: props.name
   });
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Button);
-
-/***/ }),
-
-/***/ "./resources/js/components/common/Modal.jsx":
-/*!**************************************************!*\
-  !*** ./resources/js/components/common/Modal.jsx ***!
-  \**************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _TextInput__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TextInput */ "./resources/js/components/common/TextInput.jsx");
-/* harmony import */ var _Button__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Button */ "./resources/js/components/common/Button.jsx");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-
-
-
-
-var Modal = function Modal(props) {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-    className: "overlay",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-      className: "content",
-      children: ["\u6669\u3054\u306F\u3093:", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_TextInput__WEBPACK_IMPORTED_MODULE_1__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Button__WEBPACK_IMPORTED_MODULE_2__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Button__WEBPACK_IMPORTED_MODULE_2__.default, {})]
-    })
-  });
-};
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Modal);
 
 /***/ }),
 
@@ -16581,7 +16694,16 @@ __webpack_require__.r(__webpack_exports__);
 
 var TextInput = function TextInput(props) {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-    type: "text"
+    className: props.className,
+    onChange: props.onChange,
+    required: props.required,
+    type: props.type,
+    value: props.value // fullWidth={props.fullWidth}
+    // label={props.label}
+    // margin="dense"
+    // multiline={props.multiline}
+    // rows={props.rows}
+
   });
 };
 
