@@ -14,7 +14,7 @@ const CalendarData = (props) => {
             initialView="dayGridMonth"
             locale="ja"
             // 登録済みのイベントの配列
-            events={props.events}
+            events={props.allEvents}
             // イベントクリック時のリスナー
             eventClick={props.clickEvent}
         />
