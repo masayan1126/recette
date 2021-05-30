@@ -23,6 +23,10 @@ Route::post('/calendar', [RecipeScheduleController::class,'store']);
 Route::get('/calendar', [RecipeScheduleController::class,'index']);
 
 Route::group(['middleware' => 'api'], function() {
+    Route::put('/calendar/{id?}', [RecipeScheduleController::class, 'update']);
+});
+
+Route::group(['middleware' => 'api'], function() {
     Route::get('/calendar', [RecipeScheduleController::class, 'index']);
 });
 Route::group(['middleware' => 'api'], function() {

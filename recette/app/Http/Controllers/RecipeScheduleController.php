@@ -89,7 +89,13 @@ class RecipeScheduleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // memo) updateじゃなくてsaveで部分的に更新した方が良い？(後で調べてみる)
+        RecipeSchedule::find($request->id)->update($request->all());;
+        // where('user_id', '==', $request->user_id)  // memo) user_idを条件に後でたす;
+        // clock($update_target);
+        // $update_target->fill($request->all());
+        // $update_target->save();
+
     }
 
     /**
