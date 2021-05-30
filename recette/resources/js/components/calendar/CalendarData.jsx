@@ -10,6 +10,7 @@ import "@fullcalendar/timegrid/main.css";
 const CalendarData = (props) => {
     return (
         <FullCalendar
+            height="100vh"
             plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
             initialView="dayGridMonth"
             locale="ja"
@@ -17,6 +18,8 @@ const CalendarData = (props) => {
             events={props.allEvents}
             // イベントクリック時のリスナー
             eventClick={props.clickEvent}
+            editable="true"
+            eventDrop={props.eventDrop}
         />
     );
 };
