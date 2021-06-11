@@ -4,17 +4,22 @@ import {
     applyMiddleware,
 } from "redux";
 import thunk from "redux-thunk";
-// import { connectRouter, routerMiddleware } from "connected-react-router";
+import { connectRouter, routerMiddleware } from "connected-react-router";
+
+// reducer
 import { UsersReducer } from "../users/reducers";
+import { RecipeSchedulesReducer } from "../recipeSchedules/reducers";
+import { LoadingReducer } from "../loading/reducers";
 
 export default function createStore(history) {
-    // let middleWares = [routerMiddleware(history), thunk];
-
     return reduxCreateStore(
         combineReducers({
-            // router: connectRouter(history),
+            loading: LoadingReducer,
+            router: connectRouter(history),
             users: UsersReducer,
-        })
-        // applyMiddleware(...middleWares)
+            recipeSchedules: RecipeSchedulesReducer,
+        }),
+
+        applyMiddleware(routerMiddleware(history), thunk)
     );
 }

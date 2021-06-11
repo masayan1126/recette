@@ -15,10 +15,10 @@ class CreateRecipeSchedulesTable extends Migration
     {
         Schema::create('recipe_schedules', function (Blueprint $table) {
             $table->id();
-            // $table->foreignId('user_id') // 「テーブル名の単数形」のスネークケース + '_id'
-            // ->comment('ユーザーテーブルへの外部キー')
-            // ->constrained('users') // 「複数形のテーブル名」
-            // ->onDelete('cascade');
+            $table->foreignId('user_id') // 「テーブル名の単数形」のスネークケース + '_id'
+            ->comment('ユーザーテーブルへの外部キー')
+            ->constrained('users') // 「複数形のテーブル名」
+            ->onDelete('cascade');
 
             $table->string("title")->comment('晩ごはん');
             $table->string("start")->comment('日付');

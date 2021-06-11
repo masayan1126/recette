@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RecipeScheduleController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,20 +17,23 @@ use App\Http\Controllers\RecipeScheduleController;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+Route::post('/login', [LoginController::class,'login']);
+Route::post('/logout', [LoginController::class,'logout']);
+Route::post('/register', [RegisterController::class,'register']);
+
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/calendar', [RecipeScheduleController::class,'store']);
-Route::get('/calendar', [RecipeScheduleController::class,'index']);
-
-Route::group(['middleware' => 'api'], function() {
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::get('/calendar', [RecipeScheduleController::class,'index']);
+    Route::post('/calendar', [RecipeScheduleController::class,'store']);
     Route::put('/calendar/{id?}', [RecipeScheduleController::class, 'update']);
+    Route::delete('/calendar/{id?}', [RecipeScheduleController::class, 'destroy']);
 });
 
-Route::group(['middleware' => 'api'], function() {
-    Route::get('/calendar', [RecipeScheduleController::class, 'index']);
-});
-Route::group(['middleware' => 'api'], function() {
-    Route::post('/calendar', [RecipeScheduleController::class, 'store']);
-});
+
