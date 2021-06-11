@@ -10,7 +10,7 @@ class RecipeSchedule extends Model
     use HasFactory;
 
     protected $fillable = [
-        'start','title'
+        'start','title','user_id'
     ];
 
     public function recipe_schedule()

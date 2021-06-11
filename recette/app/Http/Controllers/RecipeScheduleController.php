@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\RecipeSchedule;
+use App\Models\User;
 
 
 class RecipeScheduleController extends Controller
@@ -14,70 +15,27 @@ class RecipeScheduleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
-        //
-        $recipeSchedule = RecipeSchedule::all();
-        clock($recipeSchedule);
-        return $recipeSchedule;
+        $recipe_schedules = User::with(['recipe_schedules'])->where('id', Auth::id())->get();
+        clock($recipe_schedules);
+        return $recipe_schedules;
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        $arr=[];
         foreach ($request->all() as $request){
+            clock($request);
+            // $requestは配列
             $recipe_schedules = RecipeSchedule::create(
                 $request
             );
-            // clock($recipe_schedules);
-            // return $recipe_schedules;
-
         }
-        //
-        // RecipeSchedule::create([
-        //     'date' => $request->data->date,
-        //     'user_id' => Auth::id(),
-        //     'dinner' => $request->data->dinner,
-        // ]);
-        // dd($request->all());
-    }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        $recipe_schedules = User::with(['recipe_schedules'])->where('id', Auth::id())->get();
+        clock($recipe_schedules);
+        return $recipe_schedules;
     }
 
     /**
@@ -90,12 +48,11 @@ class RecipeScheduleController extends Controller
     public function update(Request $request, $id)
     {
         // memo) updateじゃなくてsaveで部分的に更新した方が良い？(後で調べてみる)
-        RecipeSchedule::find($request->id)->update($request->all());;
-        // where('user_id', '==', $request->user_id)  // memo) user_idを条件に後でたす;
-        // clock($update_target);
-        // $update_target->fill($request->all());
-        // $update_target->save();
-
+        $recipe_schedule = RecipeSchedule::find($id)->update($request->all());
+        // memo) 二回クエリ実行してしまっているので、下記は修正の余地あり(jsでObject.assignを使用して更新分だけストアーのデータを置換する)
+        // $recipe_schedules = User::with(['recipe_schedules'])->where('id', Auth::id())->get();
+        // clock($recipe_schedules);
+        return $recipe_schedule;
     }
 
     /**
@@ -107,5 +64,13 @@ class RecipeScheduleController extends Controller
     public function destroy($id)
     {
         //
+        if ($id) {
+            $recipe_schedule = RecipeSchedule::where('id', $id)->delete();
+            clock($recipe_schedule);
+            return $recipe_schedule;
+        }
+
+        RecipeSchedule::where('user_id', Auth::id())->delete();
+
     }
 }

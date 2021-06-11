@@ -1,8 +1,15 @@
 export const initialState = {
     users: {
         email: "",
-        isSignedIn: false,
         uid: "",
         username: "",
+        isSignedIn: false,
+    },
+    recipeSchedules: {
+        list: [],
+    },
+    loading: {
+        isLoading: false,
+        text: "",
     },
 };

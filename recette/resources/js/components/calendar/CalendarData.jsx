@@ -8,18 +8,24 @@ import "@fullcalendar/daygrid/main.css";
 import "@fullcalendar/timegrid/main.css";
 
 const CalendarData = (props) => {
+    console.log("CalendarData(子)コンポーネントがレンダーされました");
+
     return (
         <FullCalendar
             height="100vh"
-            plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
-            initialView="dayGridMonth"
+            plugins={[dayGridPlugin, interactionPlugin]}
+            // initialView="dayGridMonth"
+            // initialView="dayGridWeek"
+            initialView={props.initialView}
             locale="ja"
             // 登録済みのイベントの配列
-            events={props.allEvents}
+            events={props.recipeSchedules}
             // イベントクリック時のリスナー
             eventClick={props.clickEvent}
             editable="true"
-            eventDrop={props.eventDrop}
+            eventDrop={props.moveEvent}
+            selectable="true"
+            select={props.selectDate}
         />
     );
 };

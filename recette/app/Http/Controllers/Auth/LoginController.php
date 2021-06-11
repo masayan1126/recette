@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -37,4 +39,23 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    public function login(Request $request)
+    {
+        // userテーブルへの照合(attemptメソッドは、認証が成功すればtrueを返します。失敗時はfalseを返します。)
+        // 照合に成功したら、ログイン状態になる
+        if (Auth::attempt($request->only('email', 'password'))){
+            clock(Auth::user());
+            return response()->json(Auth::user(), 200);
+        }
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return response()->json(['message' => 'Logged out'], 200);
+    }
+
 }
+
+
