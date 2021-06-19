@@ -1,6 +1,5 @@
 import React, { useCallback, useState, useEffect } from "react";
-import TextInput from "../common/TextInput";
-import Button from "../common/Button";
+import { Button, TextInput } from "../common/index";
 import axios from "axios";
 
 const CalendarInputForm = (props) => {
@@ -41,7 +40,7 @@ const CalendarInputForm = (props) => {
                             className=""
                             name="削除する"
                             onClick={(eventId) =>
-                                props.deleteRecipeSchedule(eventId)
+                                props.destroyRecipeSchedule(eventId)
                             }
                         />
                         <Button

@@ -29,7 +29,7 @@ class ExampleTest extends TestCase
         // dd($user);
         Auth::login($user);
         $res = $this->getJson('api/user');
-        $res->assertOk()->assertJsonCount($user->count());
+        $res->assertOk()->assertJsonCount(6);
 
         // dd($res->json());
     }

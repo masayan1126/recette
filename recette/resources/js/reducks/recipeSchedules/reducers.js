@@ -16,13 +16,14 @@ export const RecipeSchedulesReducer = (
                 el.id === action.payload.id ? action.payload : el
             );
             return {
+                ...state,
                 arr,
-                // ...state,
                 // list: action.payload,
             };
         case Actions.DELETE_SCHEDULES:
-            const _arr = state.filter((el) => el.id !== action.payload.id);
+            const _arr = state.filter((el) => el.id !== action.payload);
             return {
+                ...state,
                 _arr,
                 // ...state,
                 // list: action.payload,
