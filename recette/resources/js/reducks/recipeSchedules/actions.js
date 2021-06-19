@@ -15,9 +15,9 @@ export const updateRecipeScheduleAction = (recipeSchedules) => {
 };
 
 export const DELETE_SCHEDULES = "DELETE_SCHEDULES";
-export const deleteRecipeScheduleAction = (recipeSchedules) => {
+export const deleteRecipeScheduleAction = (eventId) => {
     return {
         type: "DELETE_SCHEDULES",
-        payload: recipeSchedules,
+        payload: eventId,
     };
 };

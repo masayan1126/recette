@@ -26,15 +26,17 @@ class RecipeScheduleController extends Controller
     public function store(Request $request)
     {
         foreach ($request->all() as $request){
-            clock($request);
             // $requestは配列
             $recipe_schedules = RecipeSchedule::create(
                 $request
             );
+            // $recipe_schedule = new RecipeSchedule();
+            // $recipe_schedule->fill($request)->save();
+            clock($recipe_schedules);
+
         }
 
         $recipe_schedules = User::with(['recipe_schedules'])->where('id', Auth::id())->get();
-        clock($recipe_schedules);
         return $recipe_schedules;
     }
 
@@ -51,7 +53,7 @@ class RecipeScheduleController extends Controller
         $recipe_schedule = RecipeSchedule::find($id)->update($request->all());
         // memo) 二回クエリ実行してしまっているので、下記は修正の余地あり(jsでObject.assignを使用して更新分だけストアーのデータを置換する)
         // $recipe_schedules = User::with(['recipe_schedules'])->where('id', Auth::id())->get();
-        // clock($recipe_schedules);
+        clock($recipe_schedule);
         return $recipe_schedule;
     }
 
@@ -63,14 +65,16 @@ class RecipeScheduleController extends Controller
      */
     public function destroy($id)
     {
+        clock(isset($id));
         //
-        if ($id) {
+        if (isset($id)) {
             $recipe_schedule = RecipeSchedule::where('id', $id)->delete();
             clock($recipe_schedule);
-            return $recipe_schedule;
+        }else {
+
+            RecipeSchedule::where('user_id', Auth::id())->delete();
         }
 
-        RecipeSchedule::where('user_id', Auth::id())->delete();
 
     }
 }

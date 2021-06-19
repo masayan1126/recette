@@ -38,14 +38,17 @@ export const updateRecipeSchedule = (event) => {
 };
 
 export const deleteRecipeSchedule = (eventId) => {
+    let url = "/api/calendar";
+    if (eventId) {
+        url = url + "/" + eventId;
+    }
+    console.log(url);
     return async (dispatch, getState) => {
         axios
-            .delete("/api/calendar/" + eventId)
+            .delete(url)
             .then((res) => {
                 dispatch(showLoadingAction());
-                dispatch(
-                    deleteRecipeScheduleAction(res.data[0].recipe_schedules)
-                );
+                dispatch(deleteRecipeScheduleAction(eventId));
                 console.log(res.data[0].recipe_schedules);
                 setTimeout(() => {
                     dispatch(hideLoadingAction());

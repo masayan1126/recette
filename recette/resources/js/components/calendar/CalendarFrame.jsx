@@ -210,7 +210,17 @@ const CalendarFrame = () => {
         [recipeName, startDate, endDate]
     );
 
-    console.log(recipeSchedules);
+    const destroyRecipeSchedule = () => {
+        setIsOpen(false);
+        dispatch(showLoadingAction());
+        eventId
+            ? dispatch(deleteRecipeSchedule(eventId))
+            : dispatch(deleteRecipeSchedule());
+
+        setTimeout(() => {
+            dispatch(hideLoadingAction());
+        }, 2000);
+    };
 
     useEffect(() => {
         dispatch(fetchAllRecipeSchedule());
@@ -227,9 +237,7 @@ const CalendarFrame = () => {
             {/* モーダルが開いている状態 */}
             {isOpen ? (
                 <CalendarInputForm
-                    deleteRecipeSchedule={() =>
-                        dispatch(deleteRecipeSchedule(eventId))
-                    }
+                    destroyRecipeSchedule={() => destroyRecipeSchedule(eventId)}
                     initCalendarInputForm={initCalendarInputForm}
                     inputRecipeName={inputRecipeName}
                     recipeName={recipeName}
@@ -250,7 +258,7 @@ const CalendarFrame = () => {
                     />
                     <Button
                         name="全削除"
-                        onClick={() => dispatch(deleteRecipeSchedule())}
+                        onClick={() => destroyRecipeSchedule()}
                     />
 
                     <CalendarData

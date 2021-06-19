@@ -17,6 +17,7 @@ export const signIn = (email, password) => {
         // getStateで簡単に現在のstoreのstateの値が取得できる -> const isSignedIn = getState().users.isSignedIn;
         // ログイン時にCSRFトークンを初期化
         axios.get("/sanctum/csrf-cookie").then((response) => {
+            console.log(response);
             axios
                 // ログインフォームで入力されたemailとパスワードを元に認証チェック
                 .post("/api/login", {
